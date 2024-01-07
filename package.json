@@ -1,0 +1,29 @@
+{
+  "name": "nextstuff",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 8080",
+    "lint": "next lint",
+    "gcp-build": "npm run build",
+    "deploy": "gcloud config set project mynextstuff && gcloud app deploy app.yaml --version=0-1-1"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4"
+  },
+  "engines": {
+    "node": "~20"
+  }
+}
