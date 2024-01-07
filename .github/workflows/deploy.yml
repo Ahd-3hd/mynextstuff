@@ -57,9 +57,5 @@ jobs:
       - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v2"
 
-      - name: Get Formatted SHA
-        id: sha
-        run: echo "FORMATTED_SHA=v$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
       - name: Deploy to Google App Engine
-        run: gcloud app deploy --version
+        run: npm run deploy
