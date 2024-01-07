@@ -68,3 +68,13 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: npm run build
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: mynextstuff
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Deploy to Google App Engine
+        run: npm run deploy
