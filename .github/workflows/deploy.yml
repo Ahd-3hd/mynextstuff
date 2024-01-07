@@ -57,5 +57,9 @@ jobs:
       - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v2"
 
+      - name: Get Short SHA
+        id: slug
+        run: echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
       - name: Deploy to Google App Engine
-        run: npm run deploy
+        run: gcloud config set project mynextstuff && gcloud app deploy app.yaml --version=${{ env.slug.SHORT_SHA }}
